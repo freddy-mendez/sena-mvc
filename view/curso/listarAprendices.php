@@ -16,6 +16,7 @@ include ('view/head.php');
         <br><br>
         <form method="post" action="index.php?obj=curso&action=addAprendicesCurso&id=<?php echo $id?>">
         <button type="submit" class="btn btn-success">Agregar Aprendices</button>
+        <a href="index.php?obj=curso&action=addAprendiz&id=<?php echo $id?>" class="btn btn-secondary float-end">Volver</a>
         <br><br>
         <?php
         if (count($aprendices)>0) {
