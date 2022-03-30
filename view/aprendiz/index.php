@@ -1,5 +1,9 @@
 <?php
 require_once('entity/Aprendiz.php');
+require_once('entity/Usuario.php');
+
+$user = $_SESSION['user'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,7 +15,11 @@ include ('view/head.php');
     <div class="container">
         <h1 class="mt-3"><?php echo $titulo; ?></h1>
         <br><br>
+        <?php
+        if ($user->rol == 'Admin') {
+        ?>
         <a href="index.php?obj=aprendiz&action=agregar" class="btn btn-success">Crear Aprendiz</a>
+        <?php } ?>
         <br><br>
         <?php
         if (count($aprendices)>0) {
@@ -23,7 +31,13 @@ include ('view/head.php');
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
+                    <?php
+                        if ($user->rol == 'Admin') {
+                    ?>
                     <th>Opciones</th>
+                    <?php
+                        }
+                        ?>
                 </thead>
                 <tbody>
                     <?php
@@ -35,8 +49,10 @@ include ('view/head.php');
                         echo "<td>".$aprendiz->apellidos."</td>";
                         echo "<td>".(($aprendiz->email)?$aprendiz->email:"No tienen Email")."</td>";
                         echo "<td>";
+                        if ($user->rol == 'Admin') {
                         echo "<a href='index.php?obj=aprendiz&action=editar&id=$aprendiz->id' class='btn btn-warning me-1'>Editar</a>";
                         echo "<a href='index.php?obj=aprendiz&action=eliminar&id=$aprendiz->id' class='btn btn-danger'>Eliminar</a>";
+                        }
                         echo "</td>";
                         echo "</tr>";
                     }

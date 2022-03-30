@@ -38,8 +38,8 @@ include ('view/head.php');
                         echo "<td><input type='checkbox' name='aprendices[]' value='$aprendiz->id' /></td>";
                         echo "<td>$aprendiz->id</td>";
                         echo "<td>$aprendiz->documento</td>";
-                        echo "<td>$aprendiz->nombres</td>";
-                        echo "<td>".$aprendiz->apellidos."</td>";
+                        echo "<td>".utf8_decode($aprendiz->nombres)."</td>";
+                        echo "<td>".utf8_decode($aprendiz->apellidos)."</td>";
                         echo "<td>".(($aprendiz->email)?$aprendiz->email:"No tienen Email")."</td>";
                         echo "</tr>";
                     }

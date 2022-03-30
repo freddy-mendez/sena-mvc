@@ -11,7 +11,7 @@ class Db extends PDO {
     {
         try {
             $this->dbh = parent::__construct('mysql:dbname='.$this->db.
-                ';host='.$this->host, $this->username, $this->password);
+                ';host='.$this->host.';charset=utf8', $this->username, $this->password);
         } catch (PDOException $e) {
             echo 'Error: '.$e->getMessage();
         }
