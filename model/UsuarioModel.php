@@ -14,6 +14,20 @@ class UsuarioModel {
         $query->execute();
         return $query->fetchObject('Usuario');
     }
+
+    public function updateFoto($file, $id) {
+        $db = new Db();
+        $sql = "UPDATE users SET foto=:foto WHERE id=:id";
+        $query = $db->prepare($sql);
+        $query->bindParam(':foto', $file);
+        $query->bindParam(':id', $id);
+        $query->execute();
+        echo var_dump($file);
+        echo "<br>";
+        echo var_dump($id);
+        echo "<br>";
+        echo var_dump($query);
+    }
 }
 
 

@@ -30,7 +30,9 @@ class AppController {
                 unset($_SESSION['user']);
                 header('Location: index.php');
                 return;
-            } 
+            } else if (isset($_GET['action']) && $_GET['action'] == 'save-foto') {
+                $this->user->main();
+            }
         }
 
         $obj = isset($_GET['obj'])?$_GET['obj'] : 'menu';

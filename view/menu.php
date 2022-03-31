@@ -5,6 +5,8 @@
 
 $user = $_SESSION['user'];
 
+//echo var_dump($user);
+
 $titulo="Menu Principal";
 include ('head.php');
 ?>
@@ -15,6 +17,9 @@ include ('head.php');
                 <div class="card">
                     <div class="card-body">
                         Bienvenido <?php echo $user->nombre." ".$user->apellido; ?>
+                        <a href="view/upload-foto.php">
+                        <img width="75" height="90" src="<?php echo $user->foto; ?>" class="img-responsive float-end" alt="Foto" />
+                        </a>
                     </div>
                 </div>
             </div>

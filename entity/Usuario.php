@@ -6,9 +6,10 @@ class Usuario {
     private $nombre;
     private $apellido;
     private $rol;
+    private $foto;
 
     public function __construct() {
-
+        //$this->foto = "images/no-foto.jpg";
     }
 
     public function __set($name, $value) {

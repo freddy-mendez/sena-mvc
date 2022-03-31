@@ -1,6 +1,7 @@
 <?php
 
 require_once('model/UsuarioModel.php');
+require_once('entity/Usuario.php');
 
 class UsuarioController {
     private $data;
@@ -13,9 +14,21 @@ class UsuarioController {
         $action = isset($_GET['action']) ? $_GET['action'] : "login";
         if ($action == "login") {
             $this->loginUsuario();
-        } else {
+        } else if ($action == "save-foto") {
+            $this->saveFoto();
+        } 
+        else {
             header("Location: index.php");
         }
+    }
+
+    public function saveFoto() {
+        $file_name = $_GET['file_name'];
+        $user = $_SESSION['user'];
+        $this->data->updateFoto($file_name, $user->id);
+        unlink($user->foto);
+        $user->foto = $file_name;
+        header("Location: index.php");
     }
 
     public function loginUsuario() {
